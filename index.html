@@ -1,841 +1,904 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K Gurunath Center | Cardiac & Maternity Care</title>
-    <!-- Font Awesome & Google Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- AOS CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <style>
-        /* ----- RESET & VARIABLES ----- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        :root {
-            --primary-blue: #1a3e6a;
-            --secondary-blue: #2a6cc9;
-            --accent-red: #c92a3f;
-            --soft-red: #cf1b1b;
-            --light-bg: #f8f9fa;
-            --offwhite: #f0f4ff;
-            --text-dark: #2d3748;
-            --text-light: #4a5568;
-            --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
-            --transition: all 0.3s ease;
-        }
-        body {
-            font-family: 'Roboto', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--light-bg);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            background: var(--accent-red);
-            color: white;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(201,42,63,0.3);
-        }
-        .btn:hover {
-            background: var(--secondary-blue);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(42,108,201,0.4);
-        }
-        section { padding: 80px 0; }
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--soft-red);
-            border-radius: 4px;
-        }
-        .section-title p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 20px auto 0;
-        }
-
-        /* ----- HEADER (STICKY, GRADIENT) ----- */
-        header {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            padding: 10px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        .header-container {
-            width: 90%;
-            max-width: 1300px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        .logo { display: flex; align-items: center; }
-        .heart-wrapper {
-            position: relative;
-            width: 55px; height: 55px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        .heart-wrapper i.fa-heartbeat {
-            color: var(--soft-red);
-            font-size: 28px;
-            animation: heartbeat 2s infinite;
-        }
-        @keyframes heartbeat {
-            0%,20%,100% { transform: scale(1); }
-            5%,15% { transform: scale(1.1); }
-        }
-        .menu-toggle {
-            position: absolute;
-            bottom: -5px; right: -5px;
-            background: var(--secondary-blue);
-            border: none;
-            width: 24px; height: 24px;
-            border-radius: 50%;
-            color: white;
-            font-size: 12px;
-            cursor: pointer;
-            display: none; /* hidden on desktop */
-            align-items: center;
-            justify-content: center;
-        }
-        .logo-text h1 {
-            color: white;
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        .logo-text span { color: #FFD166; }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 28px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.05rem;
-            transition: 0.3s;
-            padding: 6px 0;
-            border-bottom: 2px solid transparent;
-        }
-        nav ul li a:hover, nav ul li a.active {
-            border-bottom-color: white;
-            color: #FFD166;
-        }
-
-        /* ----- HERO (VIDEO) ----- */
-        .hero {
-            position: relative;
-            height: 85vh;
-            min-height: 550px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            overflow: hidden;
-        }
-        .hero-video {
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transform: translate(-50%, -50%);
-            z-index: -2;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            top:0; left:0; width:100%; height:100%;
-            background: rgba(0,0,0,0.4);
-            z-index: -1;
-        }
-        .hero-content {
-            max-width: 800px;
-            padding: 20px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s forwards 0.3s;
-        }
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .hero h2 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-            font-family: 'Playfair Display', serif;
-        }
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 8px rgba(0,0,0,0.5);
-        }
-
-        /* ----- SERVICES (cards with animation) ----- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .service-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 35px rgba(0,0,0,0.12);
-        }
-        .service-icon {
-            background: #eaf4ff;
-            text-align: center;
-            padding: 30px;
-        }
-        .service-icon i {
-            font-size: 3.5rem;
-            color: var(--accent-red);
-            transition: transform 0.6s;
-        }
-        .service-card:hover .service-icon i {
-            transform: rotateY(180deg) scale(1.1);
-        }
-        .service-content { padding: 25px; }
-        .service-content h3 {
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 12px;
-        }
-
-        /* ----- FACE OF HOSPITAL (two‑column slider) ----- */
-        .face-of-hospital {
-            background: linear-gradient(135deg, white, #f0f4ff);
-            border-radius: 30px;
-            margin: 40px auto;
-            padding: 60px 0;
-        }
-        .face-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-        .face-image {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            height: 500px;
-        }
-        .doctor-image-slider {
-            position: relative;
-            width: 100%; height: 100%;
-        }
-        .doctor-img {
-            position: absolute;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 1s ease;
-            border-radius: 20px;
-        }
-        .doctor-img.active { opacity: 1; }
-        .slider-nav {
-            position: absolute;
-            bottom: 20px; left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 12px;
-            z-index: 10;
-        }
-        .slider-dot {
-            width: 14px; height: 14px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.6);
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .slider-dot.active {
-            background: white;
-            transform: scale(1.2);
-            box-shadow: 0 0 10px white;
-        }
-        .section-subtitle {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--secondary-blue);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-        .face-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        .face-title::after {
-            content: '';
-            display: block;
-            width: 80px; height: 4px;
-            background: var(--soft-red);
-            margin-top: 15px;
-        }
-        .section-text {
-            color: var(--text-light);
-            margin: 25px 0 30px;
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-        .doctor-info-slider {
-            position: relative;
-            min-height: 140px;
-            background: white;
-            padding: 25px;
-            border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            margin-bottom: 35px;
-        }
-        .doctor-info {
-            position: absolute;
-            opacity: 0;
-            transform: translateY(15px);
-            transition: 0.5s ease;
-            pointer-events: none;
-        }
-        .doctor-info.active {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-        .doctor-info strong {
-            font-size: 1.4rem;
-            color: var(--primary-blue);
-            display: block;
-            margin-bottom: 8px;
-        }
-        .doctor-info em {
-            color: var(--accent-red);
-            font-style: normal;
-            font-weight: 500;
-        }
-        .highlights {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-        .highlight-box {
-            background: white;
-            padding: 25px 20px;
-            border-radius: 16px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
-            border-left: 5px solid var(--secondary-blue);
-            transition: var(--transition);
-        }
-        .highlight-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.08);
-        }
-        .highlight-box h6 {
-            font-size: 1.1rem;
-            color: var(--primary-blue);
-            margin-bottom: 12px;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .highlight-box i { color: var(--accent-red); }
-
-        /* ----- TESTIMONIALS ----- */
-        .testimonials {
-            background: #eaf4ff;
-        }
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .testimonial-card {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-        .testimonial-card::before {
-            content: '\201C';
-            font-size: 5rem;
-            color: #eaf4ff;
-            position: absolute;
-            top: 5px; left: 20px;
-            font-family: serif;
-        }
-        .testimonial-text { margin-bottom: 20px; z-index: 2; position: relative; }
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        .author-image {
-            width: 60px; height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 15px;
-            border: 3px solid #eaf4ff;
-        }
-        .author-image img { width:100%; height:100%; object-fit:cover; }
-
-        /* ----- APPOINTMENT CTA ----- */
-        .appointment-cta {
-            background: linear-gradient(135deg, #1a3e6a, #2a6cc9);
-            color: white;
-            text-align: center;
-            padding: 90px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .appointment-cta::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: rgba(255,255,255,0.05);
-            transform: rotate(45deg);
-            animation: shine 8s infinite linear;
-        }
-        @keyframes shine {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
-        .appointment-cta h2 { font-size: 2.8rem; margin-bottom: 20px; }
-        .appointment-cta p { font-size: 1.2rem; max-width: 650px; margin: 0 auto 30px; }
-
-        /* ----- FOOTER (DARK) ----- */
-        footer {
-            background: #0f2a47;
-            color: white;
-            padding: 70px 0 0;
-        }
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-        .footer-col h3 {
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 12px;
-        }
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 50px; height: 3px;
-            background: var(--accent-red);
-        }
-        .footer-contact ul { list-style: none; }
-        .footer-contact li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .footer-contact i { color: var(--accent-red); width: 20px; }
-        .footer-links li {
-            margin-bottom: 12px;
-            list-style: none;
-        }
-        .footer-links li a {
-            color: #ccc;
-            text-decoration: none;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .footer-links li a:hover {
-            color: white;
-            padding-left: 6px;
-        }
-        .footer-links i { color: var(--accent-red); }
-        .footer-hours {
-            list-style: none;
-        }
-        .footer-hours li {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px dashed rgba(255,255,255,0.1);
-        }
-        .footer-hours .day { color: #ddd; }
-        .footer-hours .time { font-weight: 600; }
-        .footer-hours .highlight { color: #ffd166; }
-        .copyright {
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 60px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            background: #0a1f33;
-        }
-        .copyright a {
-            color: #ffb6b6;
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-        .copyright a:hover { color: white; text-decoration: underline; }
-
-        /* ----- RESPONSIVE ----- */
-        @media (max-width: 992px) {
-            .face-container { grid-template-columns: 1fr; }
-            .face-image { height: 400px; }
-            .hero h2 { font-size: 3rem; }
-        }
-        @media (max-width: 768px) {
-            .menu-toggle { display: flex; }
-            nav {
-                width: 100%;
-                display: none;
-            }
-            nav.active { display: block; }
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-                padding: 20px 0;
-            }
-            .header-container { justify-content: center; }
-            .hero h2 { font-size: 2.4rem; }
-            .highlights { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 480px) {
-            .face-title { font-size: 2rem; }
-            .section-title h2 { font-size: 2rem; }
-        }
-    </style>
-</head>
-<body>
-
-<!-- ================= HEADER ================= -->
-<header>
-    <div class="header-container">
-        <div class="logo">
-            <div class="heart-wrapper">
-                <i class="fas fa-heartbeat"></i>
-                <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-            </div>
-            <div class="logo-text">
-                <h1>K <span>Gurunath</span> Center</h1>
-            </div>
-        </div>
-        <nav id="navbar">
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="doctors.html">Doctors</a></li>
-                <li><a href="appointment.html">Appointment</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-
-<!-- ================= HERO (VIDEO) ================= -->
-<section class="hero">
-    <video autoplay muted loop playsinline class="hero-video">
-        <!-- Replace with your actual video path. If missing, a fallback color is shown -->
-        <source src="video/myvideo.mp4" type="video/mp4">
-        Your browser does not support video.
-    </video>
-    <div class="hero-content">
-        <h2>Cardiac & Maternity Excellence</h2>
-        <p>Exceptional heart care and compassionate motherhood services under one roof.</p>
-        <a href="appointment.php" class="btn">Request an Appointment</a>
-    </div>
-</section>
-
-<!-- ================= SERVICES ================= -->
-<section class="services">
-    <div class="container">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Our Services</h2>
-            <p>Comprehensive medical care tailored to your needs</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
-                <div class="service-icon"><i class="fas fa-heart"></i></div>
-                <div class="service-content">
-                    <h3>Cardiac Surgery</h3>
-                    <p>Advanced heart surgeries including bypass, valve replacement, and minimally invasive procedures.</p>
-                </div>
-            </div>
-            <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
-                <div class="service-icon"><i class="fas fa-stethoscope"></i></div>
-                <div class="service-content">
-                    <h3>Obstetrics & Gynaecology</h3>
-                    <p>Antenatal care, safe deliveries, and management of gynaecological conditions with compassion.</p>
-                </div>
-            </div>
-            <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
-                <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
-                <div class="service-content">
-                    <h3>Infertility Specialist</h3>
-                    <p>IVF, IUI, and personalized reproductive care using latest technology to fulfill your parenthood dream.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ================= FACE OF THE HOSPITAL ================= -->
-<section class="face-of-hospital">
-    <div class="container">
-        <div class="face-container">
-            <!-- left image slider -->
-            <div class="face-image" data-aos="fade-right">
-                <div class="doctor-image-slider">
-                    <img src="data:image/jpeg;base64,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" alt="Dr. K. Gurunath" class="doctor-img active">
-                    <img src="img/Dr.Vimala_Gurunath.jpg" alt="Dr. Vimala Gurunath" class="doctor-img">
-                </div>
-                <div class="slider-nav">
-                    <div class="slider-dot active" data-index="0"></div>
-                    <div class="slider-dot" data-index="1"></div>
-                </div>
-            </div>
-            <!-- right content -->
-            <div class="face-content" data-aos="fade-left">
-                <h5 class="section-subtitle">Face of the Hospital</h5>
-                <h2 class="face-title">Great Passion For Healing</h2>
-                <p class="section-text">From advanced cardiac treatments to specialized maternity care, we prioritize your well‑being with dedication and expertise.</p>
-
-                <div class="doctor-info-slider">
-                    <div class="doctor-info active">
-                        <p><strong>Dr. K. GURUNATH</strong> Founder, K Gurunath Cardiac & Maternity Hospital<br>
-                        <em>Interventional Cardiologist</em> · MD, DM (Cardiology), FESC, FCSI</p>
-                    </div>
-                    <div class="doctor-info">
-                        <p><strong>Dr. Vimala Gurunath</strong> Co-Founder<br>
-                        <em>Consultant Obstetrician & Gynaecologist</em> · M.B.B.S, D.G.O</p>
-                    </div>
-                </div>
-
-                <div class="highlights">
-                    <div class="highlight-box">
-                        <h6><i class="fas fa-users"></i> PROFESSIONAL TEAM</h6>
-                        <p>Highly skilled team dedicated to the best possible care.</p>
-                    </div>
-                    <div class="highlight-box">
-                        <h6><i class="fas fa-microscope"></i> SERVICE & TECHNOLOGY</h6>
-                        <p>World‑class care with compassionate team and cutting‑edge tech.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ================= TESTIMONIALS ================= -->
-<section class="testimonials">
-    <div class="container">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Patient Testimonials</h2>
-            <p>Hear from those we’ve served</p>
-        </div>
-        <div class="testimonial-grid">
-            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="testimonial-text"><p>The care at K Gurunath Center was exceptional. The doctors took time to explain everything to me.</p></div>
-                <div class="testimonial-author">
-                    <div class="author-image"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop" alt="Abhishek Sinha"></div>
-                    <div class="author-details"><h4>Abhishek Sinha</h4><p>Heart Surgery Patient</p></div>
-                </div>
-            </div>
-            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="testimonial-text"><p>Grateful to Dr. Vimala for her support during my pregnancy. A truly wonderful experience.</p></div>
-                <div class="testimonial-author">
-                    <div class="author-image"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop" alt="Ankita Pandey"></div>
-                    <div class="author-details"><h4>Ankita Pandey</h4><p>Maternity Patient</p></div>
-                </div>
-            </div>
-            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="testimonial-text"><p>Cardiac rehab program changed my life. Supportive staff, excellent facilities.</p></div>
-                <div class="testimonial-author">
-                    <div class="author-image"><img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=150&h=150&fit=crop" alt="Desh Pandey"></div>
-                    <div class="author-details"><h4>Desh Pandey</h4><p>Rehabilitation Patient</p></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ================= APPOINTMENT CTA ================= -->
-<section class="appointment-cta">
-    <div class="container">
-        <h2>Schedule Your Appointment Today</h2>
-        <p>Take the first step towards better health. Our team is ready for you.</p>
-        <a href="appointment.php" class="btn">Book an Appointment</a>
-    </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer>
-    <div class="container footer-container">
-        <!-- About -->
-        <div class="footer-col" data-aos="fade-up">
-            <h3>About HeartCare</h3>
-            <p>Leading cardiac & maternity hospital with state‑of‑the‑art technology and compassionate specialists.</p>
-            <ul class="footer-contact">
-                <li><i class="fas fa-map-marker-alt"></i> Dr. Gurunath Hospital, Priyadarshini Parisar East, Supela, Bhilai, Chhattisgarh 490023</li>
-                <li><i class="fas fa-phone"></i> +91 94252-38877</li>
-                <li><i class="fas fa-envelope"></i> contact@kgurunathcardiac.com</li>
-            </ul>
-        </div>
-        <!-- Quick Links -->
-        <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
-            <h3>Quick Links</h3>
-            <ul class="footer-links">
-                <li><a href="index.php"><i class="fas fa-angle-right"></i> Home</a></li>
-                <li><a href="about.php"><i class="fas fa-angle-right"></i> About Us</a></li>
-                <li><a href="services.php"><i class="fas fa-angle-right"></i> Services</a></li>
-                <li><a href="doctors.php"><i class="fas fa-angle-right"></i> Doctors</a></li>
-                <li><a href="appointment.php"><i class="fas fa-angle-right"></i> Appointment</a></li>
-                <li><a href="contact.php"><i class="fas fa-angle-right"></i> Contact</a></li>
-            </ul>
-        </div>
-        <!-- Services -->
-        <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
-            <h3>Our Services</h3>
-            <ul class="footer-links">
-                <li><a href="#"><i class="fas fa-heartbeat"></i> Cardiac Surgery</a></li>
-                <li><a href="#"><i class="fas fa-stethoscope"></i> Cardiology</a></li>
-                <li><a href="#"><i class="fas fa-running"></i> Cardiac Rehabilitation</a></li>
-                <li><a href="#"><i class="fas fa-ambulance"></i> Emergency Care</a></li>
-                <li><a href="#"><i class="fas fa-shield-alt"></i> Preventive Cardiology</a></li>
-                <li><a href="#"><i class="fas fa-notes-medical"></i> Heart Health Screening</a></li>
-            </ul>
-        </div>
-        <!-- Opening Hours -->
-        <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
-            <h3>Opening Hours</h3>
-            <ul class="footer-hours">
-                <li><span class="day">Mon - Fri</span> <span class="time">8:00 AM - 8:00 PM</span></li>
-                <li><span class="day">Saturday</span> <span class="time">9:00 AM - 5:00 PM</span></li>
-                <li><span class="day">Sunday</span> <span class="time">10:00 AM - 4:00 PM</span></li>
-                <li><span class="day">Emergency</span> <span class="time highlight">24/7</span></li>
-            </ul>
-        </div>
-    </div>
-    <div class="copyright">
-        <p>Maintained by <a href="https://krishnex.com" target="_blank">Krishnex Technologies</a> | Designed by <a href="https://priyanshatiwari.com" target="_blank">Priyansha Tiwari</a></p>
-    </div>
-</footer>
-
-<!-- AOS JS -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-    AOS.init({ duration: 1000, once: true });
-
-    // Mobile menu toggle
-    const toggleBtn = document.getElementById('menuToggle');
-    const nav = document.getElementById('navbar');
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            toggleBtn.innerHTML = nav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HeartCare · modern cardiac hospital</title>
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- AOS (Animate on scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    // Doctor slider + info sync + dots
-    (function() {
-        const images = document.querySelectorAll('.doctor-img');
-        const infos = document.querySelectorAll('.doctor-info');
-        const dots = document.querySelectorAll('.slider-dot');
-        if (!images.length) return;
-        
-        let current = 0;
-        function showSlide(index) {
-            images.forEach(img => img.classList.remove('active'));
-            infos.forEach(info => info.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            images[index].classList.add('active');
-            infos[index].classList.add('active');
-            dots[index].classList.add('active');
-            current = index;
-        }
-        
-        dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => showSlide(i));
-        });
-        
-        setInterval(() => {
-            current = (current + 1) % images.length;
-            showSlide(current);
-        }, 5000);
-    })();
+    body {
+      font-family: "Inter", sans-serif;
+      background: #f5f9ff;
+      color: #13294e;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
 
-    // Manual animation fallback (already using AOS, but keep for legacy)
-    document.addEventListener('DOMContentLoaded', function() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if(e.isIntersecting) e.target.classList.add('animate');
-            });
-        }, { threshold:0.1 });
-        document.querySelectorAll('.service-card, .testimonial-card, .highlight-box').forEach(el => observer.observe(el));
+    /* modern color palette */
+    :root {
+      --primary: #0b2b4f;
+      --primary-light: #1e4a76;
+      --accent: #d62828;
+      --accent-soft: #fee9e9;
+      --soft-blue: #e6f0fa;
+      --gray-bg: #f9fcff;
+      --text-dark: #13294e;
+      --text-muted: #435e7a;
+      --shadow: 0 20px 30px -10px rgba(0, 32, 64, 0.15);
+      --shadow-card: 0 15px 30px -12px rgba(0, 0, 0, 0.1);
+      --border-light: rgba(0, 50, 90, 0.08);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* modern buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      color: var(--primary);
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 20px -8px rgba(210, 40, 40, 0.3);
+      transition: all 0.25s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 12px 24px -10px var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: #b11e1e;
+      transform: scale(1.02) translateY(-2px);
+      box-shadow: 0 24px 30px -12px #b11e1e;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* header sticky with blur */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(11, 43, 79, 0.08);
+      padding: 16px 0;
+    }
+
+    .header-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .logo i {
+      color: var(--accent);
+      font-size: 2.2rem;
+      filter: drop-shadow(0 4px 8px rgba(214, 40, 40, 0.3));
+      animation: pulse-heart 2.2s infinite;
+    }
+
+    @keyframes pulse-heart {
+      0% { transform: scale(1); }
+      15% { transform: scale(1.15); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.08); }
+      60% { transform: scale(1); }
+    }
+
+    .logo span {
+      color: var(--primary-light);
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--primary);
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2.5px;
+      background: var(--accent);
+      transition: 0.25s;
+      border-radius: 4px;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .emergency-badge {
+      background: var(--accent-soft);
+      padding: 10px 22px;
+      border-radius: 60px;
+      border-left: 5px solid var(--accent);
+      font-weight: 600;
+    }
+
+    .emergency-badge .phone {
+      color: var(--accent);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    /* hero with abstract shapes */
+    .hero {
+      padding: 60px 0 80px;
+      background: linear-gradient(145deg, #ffffff 20%, #edf5ff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(214,40,40,0.03) 0%, transparent 70%);
+      top: -200px;
+      right: -100px;
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(11,43,79,0.03) 0%, transparent 70%);
+      bottom: -100px;
+      left: -50px;
+      border-radius: 50%;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      position: relative;
+      z-index: 5;
+    }
+
+    .hero h2 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .hero h2 span {
+      color: var(--accent);
+      background: linear-gradient(145deg, var(--accent), #b11e1e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 32px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-image {
+      background: url('https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&auto=format&fit=crop') center/cover;
+      border-radius: 40px;
+      height: 480px;
+      box-shadow: var(--shadow);
+      border: 8px solid white;
+      transition: transform 0.4s ease;
+    }
+
+    .hero-image:hover {
+      transform: scale(1.01) rotate(0.5deg);
+    }
+
+    /* section title */
+    .section-title {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 56px;
+    }
+
+    .section-title h3 {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      margin-top: 16px;
+    }
+
+    .chip {
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: inline-block;
+      padding: 6px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      border: 1px solid rgba(214,40,40,0.2);
+    }
+
+    /* cards grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 36px 28px;
+      border-radius: 32px;
+      box-shadow: var(--shadow-card);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-light);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 28px 40px -16px #0b2b4f33;
+      border-color: transparent;
+    }
+
+    .service-icon {
+      background: var(--soft-blue);
+      width: 70px;
+      height: 70px;
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      color: var(--primary);
+      font-size: 2.2rem;
+      transition: 0.2s;
+    }
+
+    .service-card:hover .service-icon {
+      background: var(--primary);
+      color: white;
+    }
+
+    .service-card h4 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    /* doctors minimal slider */
+    .face-section {
+      background: white;
+      border-radius: 50px 50px 0 0;
+      padding: 80px 0;
+    }
+
+    .face-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .image-stack {
+      position: relative;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      height: 550px;
+    }
+
+    .doctor-img-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s cubic-bezier(0.2, 0.9, 0.3, 1);
+      border-radius: 40px;
+    }
+
+    .doctor-img-slide.active {
+      opacity: 1;
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 14px;
+      z-index: 10;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.2s;
+      backdrop-filter: blur(2px);
+    }
+
+    .dot.active {
+      background: white;
+      width: 32px;
+      box-shadow: 0 2px 8px black;
+    }
+
+    .doctor-info-card {
+      background: var(--soft-blue);
+      padding: 36px;
+      border-radius: 32px;
+      margin: 36px 0 24px;
+      border-left: 8px solid var(--accent);
+    }
+
+    .doctor-info-card h5 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .doctor-info-card p {
+      color: var(--text-dark);
+    }
+
+    .highlights-mini {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .highlight-item {
+      background: var(--gray-bg);
+      border-radius: 28px;
+      padding: 24px;
+      border: 1px solid var(--border-light);
+      transition: 0.2s;
+    }
+
+    .highlight-item:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .highlight-item i {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    .highlight-item:hover i {
+      color: white;
+    }
+
+    /* testimonials with float */
+    .testimonials-section {
+      background: linear-gradient(135deg, #f0f7ff, #eaf2fc);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    .testimonial-card-modern {
+      background: white;
+      padding: 36px 28px;
+      border-radius: 32px;
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    .quote-icon {
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--accent-soft);
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      opacity: 0.5;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .author-img {
+      width: 56px;
+      height: 56px;
+      border-radius: 28px;
+      object-fit: cover;
+      border: 3px solid var(--soft-blue);
+    }
+
+    /* CTA section */
+    .cta-modern {
+      background: var(--primary);
+      color: white;
+      border-radius: 50px;
+      margin: 40px auto 20px;
+      padding: 70px 40px;
+      text-align: center;
+      background-image: radial-gradient(circle at 100% 0%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    }
+
+    .cta-modern h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .cta-modern .btn {
+      background: white;
+      color: var(--primary);
+      font-size: 1.2rem;
+      padding: 16px 48px;
+    }
+
+    /* footer */
+    footer {
+      background: #0b1e30;
+      color: #b0c7db;
+      padding: 60px 0 20px;
+      border-radius: 40px 40px 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+    }
+
+    .footer-logo {
+      color: white;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo i {
+      color: var(--accent);
+      margin-right: 10px;
+    }
+
+    .footer-links li {
+      list-style: none;
+      margin: 16px 0;
+    }
+
+    .footer-links a {
+      color: #b0c7db;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 50px;
+      color: #6482a0;
+      font-size: 0.9rem;
+    }
+
+    /* mobile menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links, .emergency-badge { display: none; }
+      .mobile-menu-btn { display: block; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .face-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* mobile menu drawer */
+    .mobile-drawer {
+      position: fixed;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background: white;
+      z-index: 100;
+      padding: 40px;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-drawer.open {
+      transform: translateX(0);
+    }
+
+    .close-menu {
+      font-size: 2rem;
+      background: none;
+      border: none;
+      text-align: right;
+      width: 100%;
+      cursor: pointer;
+    }
+    /* animations helpers */
+    [data-aos] {
+      transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-flex">
+      <div class="logo">
+        <i class="fas fa-heartbeat"></i>
+        <div>Heart<span>Care</span></div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#" class="active">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Doctors</a>
+        <a href="#">Appointment</a>
+        <a href="#">Contact</a>
+      </nav>
+
+      <div class="emergency-badge">
+        <i class="fas fa-phone-alt" style="color: #d62828;"></i> emergency
+        <div class="phone">0788 2294377</div>
+      </div>
+
+      <button class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+
+  <!-- mobile drawer -->
+  <div id="mobileDrawer" class="mobile-drawer">
+    <button class="close-menu" onclick="toggleMenu()"><i class="fas fa-times"></i></button>
+    <ul style="list-style:none; margin-top: 30px;">
+      <li style="margin:20px 0"><a href="#" onclick="toggleMenu()">Home</a></li>
+      <li style="margin:20px 0"><a href="#" onclick="toggleMenu()">About</a></li>
+      <li style="margin:20px 0"><a href="#" onclick="toggleMenu()">Services</a></li>
+      <li style="margin:20px 0"><a href="#" onclick="toggleMenu()">Doctors</a></li>
+      <li style="margin:20px 0"><a href="#" onclick="toggleMenu()">Appointment</a></li>
+      <li style="margin:20px 0"><a href="#" onclick="toggleMenu()">Contact</a></li>
+    </ul>
+  </div>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div data-aos="fade-up" data-aos-duration="1000">
+        <span class="chip"><i class="far fa-clock"></i> 24/7 cardiac emergency</span>
+        <h2>Advanced <span>heart care</span> with human touch</h2>
+        <p>Providing exceptional cardiac treatment and maternity care with cutting‑edge technology and compassionate specialists.</p>
+        <a href="#" class="btn btn-primary">Request appointment <i class="fas fa-arrow-right"></i></a>
+        
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">15k+</span>
+            <span class="stat-label">Happy patients</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">24+</span>
+            <span class="stat-label">specialists</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">success rate</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image" data-aos="zoom-in" data-aos-delay="200"></div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section style="padding: 70px 0;">
+    <div class="container">
+      <div class="section-title" data-aos="fade-down">
+        <span class="chip"><i class="fas fa-stethoscope"></i> what we offer</span>
+        <h3>Comprehensive cardiac & women's health services</h3>
+        <p>Integrated, multidisciplinary care for you and your family</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card" data-aos="flip-left" data-aos-delay="100">
+          <div class="service-icon"><i class="fas fa-heart"></i></div>
+          <h4>Cardiac Surgery</h4>
+          <p>Bypass, valve replacement, minimally invasive procedures — performed by top interventional cardiologists.</p>
+        </div>
+        <div class="service-card" data-aos="flip-left" data-aos-delay="200">
+          <div class="service-icon"><i class="fas fa-female"></i></div>
+          <h4>Obstetrician & Gynaecologist</h4>
+          <p>Antenatal checkups, safe deliveries, and comprehensive gynaecological care with compassion.</p>
+        </div>
+        <div class="service-card" data-aos="flip-left" data-aos-delay="300">
+          <div class="service-icon"><i class="fas fa-baby"></i></div>
+          <h4>Infertility Specialist</h4>
+          <p>IVF, IUI and personalized reproductive care — helping you achieve parenthood.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Face of the hospital (slider) -->
+  <section class="face-section">
+    <div class="container face-grid">
+      <!-- left slider -->
+      <div class="image-stack" data-aos="fade-right" id="doctorSlider">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&auto=format&fit=crop" 
+             class="doctor-img-slide active" alt="Dr. K. Gurunath">
+        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&auto=format&fit=crop" 
+             class="doctor-img-slide" alt="Dr. Vimala Gurunath">
+        <div class="slider-dots">
+          <span class="dot active" onclick="showDoctorSlide(0)"></span>
+          <span class="dot" onclick="showDoctorSlide(1)"></span>
+        </div>
+      </div>
+
+      <!-- right content -->
+      <div data-aos="fade-left">
+        <span class="chip"><i class="fas fa-user-md"></i> face of the hospital</span>
+        <h3 style="font-size:2.5rem; font-weight:700; margin-bottom:20px;">Great passion for healing</h3>
+        <p style="color: var(--text-muted); margin-bottom:30px;">With profound commitment, our hospital provides compassionate care for individuals at every life stage.</p>
+
+        <!-- dynamic info (updated via js) -->
+        <div class="doctor-info-card" id="doctorInfo">
+          <h5>Dr. K. GURUNATH</h5>
+          <p>Founder, Interventional Cardiologist</p>
+          <p style="font-size:0.95rem; background: white; padding:8px 16px; border-radius:50px; display:inline-block; margin-top:10px;">MD, DM (Cardiology), FESC, FCSI</p>
+        </div>
+
+        <div class="highlights-mini">
+          <div class="highlight-item" data-aos="zoom-in" data-aos-delay="100">
+            <i class="fas fa-users"></i>
+            <h6 style="font-size:1.3rem;">Professional team</h6>
+            <p style="font-size:0.9rem;">Highly skilled, dedicated to best possible care.</p>
+          </div>
+          <div class="highlight-item" data-aos="zoom-in" data-aos-delay="200">
+            <i class="fas fa-microscope"></i>
+            <h6 style="font-size:1.3rem;">Service & tech</h6>
+            <p style="font-size:0.9rem;">World‑class team & leading‑edge technology.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section" style="padding: 80px 0;">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <span class="chip"><i class="fas fa-star"></i> patient stories</span>
+        <h3>Trusted by hundreds of families</h3>
+      </div>
+
+      <div class="testimonial-grid">
+        <div class="testimonial-card-modern" data-aos="fade-up" data-aos-delay="0">
+          <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+          <p>The care I received at HeartCare was exceptional. Doctors explained everything, and the staff was compassionate.</p>
+          <div class="testimonial-author">
+            <img class="author-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="">
+            <div><strong>Abhishek Sinha</strong><br>heart surgery patient</div>
+          </div>
+        </div>
+        <div class="testimonial-card-modern" data-aos="fade-up" data-aos-delay="100">
+          <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+          <p>I'm so grateful to the team for saving my life. Quick response and expert care made all the difference.</p>
+          <div class="testimonial-author">
+            <img class="author-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop" alt="">
+            <div><strong>Ankita Pandey</strong><br>cardiology patient</div>
+          </div>
+        </div>
+        <div class="testimonial-card-modern" data-aos="fade-up" data-aos-delay="200">
+          <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+          <p>The cardiac rehab program changed my life. Supportive staff helped me regain my strength and confidence.</p>
+          <div class="testimonial-author">
+            <img class="author-img" src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=100&h=100&fit=crop" alt="">
+            <div><strong>Desh Pandey</strong><br>rehabilitation patient</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="container">
+    <div class="cta-modern" data-aos="flip-up">
+      <h2>Schedule your appointment today</h2>
+      <p style="max-width: 600px; margin: 0 auto 30px;">Take the first step towards better heart health. Our team is ready.</p>
+      <a href="#" class="btn">Book an appointment <i class="fas fa-calendar-check"></i></a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo"><i class="fas fa-heartbeat"></i> HeartCare</div>
+          <p>Excellence in cardiac and maternity care, with a human touch.</p>
+        </div>
+        <div>
+          <h5 style="color:white;">Quick links</h5>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Doctors</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 style="color:white;">Support</h5>
+          <ul class="footer-links">
+            <li><a href="#">Appointment</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Privacy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 style="color:white;">Reach us</h5>
+          <p><i class="fas fa-map-marker-alt"></i> 12 Heart Ave, City</p>
+          <p><i class="fas fa-phone"></i> 0788 2294377</p>
+          <p><i class="fas fa-envelope"></i> care@heartcare.com</p>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2026 HeartCare Cardiac Hospital. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    // mobile drawer
+    function toggleMenu() {
+      document.getElementById('mobileDrawer').classList.toggle('open');
+    }
+
+    // doctor slider data
+    const doctorData = [
+      { name: "Dr. K. GURUNATH", title: "Founder, Interventional Cardiologist", cred: "MD, DM (Cardiology), FESC, FCSI" },
+      { name: "Dr. Vimala Gurunath", title: "Co-Founder, Consultant Obstetrician & Gynaecologist", cred: "M.B.B.S, D.G.O" }
+    ];
+
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.doctor-img-slide');
+    const dots = document.querySelectorAll('.dot');
+    const infoDiv = document.getElementById('doctorInfo');
+
+    function showDoctorSlide(index) {
+      slides.forEach(s => s.classList.remove('active'));
+      dots.forEach(d => d.classList.remove('active'));
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+
+      // update info card
+      infoDiv.innerHTML = `<h5>${doctorData[index].name}</h5>
+        <p>${doctorData[index].title}</p>
+        <p style="font-size:0.95rem; background: white; padding:8px 16px; border-radius:50px; display:inline-block; margin-top:10px;">${doctorData[index].cred}</p>`;
+      slideIndex = index;
+    }
+
+    // auto slide
+    setInterval(() => {
+      let next = (slideIndex + 1) % slides.length;
+      showDoctorSlide(next);
+    }, 4500);
+
+    // assign click to dots
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => showDoctorSlide(idx));
     });
-</script>
 
-<!-- Font Awesome fallback -->
+    // close mobile drawer on link click (simple)
+    document.querySelectorAll('#mobileDrawer a').forEach(link => {
+      link.addEventListener('click', () => toggleMenu());
+    });
+  </script>
+  <!-- ensure first slide shows correct info -->
+  <script>showDoctorSlide(0);</script>
 </body>
 </html>
