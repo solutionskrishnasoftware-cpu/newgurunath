@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <!-- perfect mobile viewport (same as original) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>HeartCare · cinematic experience</title>
+  <title>HeartCare · cinematic experience (index)</title>
   <!-- Fonts & Icons (Outfit) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,7 @@
   <!-- AOS CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
+    /* ----- EXACT STYLES FROM YOUR ORIGINAL INDEX (with perfect mobile) ----- */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Outfit', sans-serif;
@@ -166,7 +167,7 @@
       background: rgba(255,255,255,0.1);
     }
 
-    /* ----- header (transparent, like index) ----- */
+    /* ----- HEADER (transparent, like index, identical) ----- */
     header {
       position: fixed;
       top: 0;
@@ -229,7 +230,7 @@
     }
     @media (min-width:1000px) { .mobile-menu-icon { display: none; } }
 
-    /* ----- mobile drawer (improved for mobile) ----- */
+    /* ----- MOBILE DRAWER (improved, same as index) ----- */
     .mobile-drawer {
       position: fixed;
       top: 0;
@@ -284,7 +285,7 @@
     }
     .drawer-emergency .phone { font-size: 1.6rem; font-weight: 700; color: var(--warm-coral); }
 
-    /* ----- main content overlap (cinematic) ----- */
+    /* ----- MAIN CONTENT OVERLAP (cinematic) ----- */
     .content-after-video {
       position: relative;
       background: white;
@@ -325,7 +326,7 @@
       margin-top: 16px;
     }
 
-    /* services grid */
+    /* services grid (exact same as index) */
     .grid-3 {
       display: grid;
       grid-template-columns: 1fr;
@@ -344,13 +345,11 @@
       transition: all 0.35s ease;
     }
     @media (min-width:700px){ .service-card-lux { padding:36px 28px; } }
-
     .service-card-lux:hover {
       transform: translateY(-10px) scale(1.01);
       background: white;
       box-shadow: 0 40px 50px -24px var(--rich-teal);
     }
-
     .service-icon-lux {
       background: linear-gradient(145deg, #fff4f0, #ffeae5);
       width: 70px; height: 70px;
@@ -425,7 +424,6 @@
       margin-top: 30px;
     }
     @media (min-width:500px){ .highlights-lux { grid-template-columns: 1fr 1fr; } }
-
     .highlights-lux > div {
       background: white;
       padding: 24px;
@@ -455,7 +453,7 @@
       color: var(--deep-navy);
     }
 
-    /* footer with exact credits */
+    /* footer with exact credits (same as index) */
     .footer-cinema {
       background: #05161f;
       color: #9bb7d4;
@@ -485,7 +483,7 @@
     }
     .design-credit { color: #a0c0d8; font-weight: 300; }
 
-    /* emergency sticky - mobile friendly */
+    /* emergency sticky */
     .emergency-sticky-cinema {
       position: fixed;
       bottom: 20px;
@@ -518,7 +516,7 @@
   </style>
 </head>
 <body>
-  <!-- fixed header (cinematic) -->
+  <!-- fixed header (cinematic) exactly like index -->
   <header>
     <div class="logo-glass">
       <i class="fas fa-heartbeat"></i> <span>Heart<span style="font-weight:300;">Care</span></span>
@@ -537,7 +535,7 @@
     <div class="mobile-menu-icon" id="menuIcon"><i class="fas fa-bars"></i></div>
   </header>
 
-  <!-- improved mobile drawer (fullscreen, blur, smooth) -->
+  <!-- mobile drawer (improved, same as index) -->
   <div id="mobileDrawer" class="mobile-drawer">
     <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
     <ul class="drawer-nav">
@@ -571,7 +569,7 @@
     </div>
   </div>
 
-  <!-- MAIN CONTENT (cinematic) -->
+  <!-- MAIN CONTENT (index / home cinematic) -->
   <div class="content-after-video">
     <!-- Services section -->
     <section style="padding: 70px 0 40px;" class="shape-bg">
@@ -706,7 +704,7 @@
   <script>
     AOS.init({ duration: 1000, once: true, easing: 'ease-out-cubic' });
 
-    // mobile drawer with improved close function
+    // mobile drawer (exact same as index)
     const menuIcon = document.getElementById('menuIcon');
     const drawer = document.getElementById('mobileDrawer');
     const closeBtn = document.getElementById('closeMenu');
