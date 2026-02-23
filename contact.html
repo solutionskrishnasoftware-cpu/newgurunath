@@ -1,0 +1,844 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- CRITICAL: perfect mobile viewport - no overflow, user-scalable for accessibility -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+  <title>Contact Us · K Gurunath Center (cinematic mobile perfect)</title>
+  <!-- Fonts & Icons (Outfit) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* RESET & SAFE LAYOUT — STRICT ANTI-OVERFLOW */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: hidden;  /* kill horizontal scroll */
+      width: 100%;
+      position: relative;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #ffffff;
+      color: #11212e;
+      line-height: 1.5;
+    }
+
+    :root {
+      --deep-navy: #082032;
+      --rich-teal: #2c5263;
+      --warm-coral: #ff6f61;
+      --soft-peach: #fff1f0;
+      --pale-mist: #f0f7fa;
+      --pure-white: #ffffff;
+      --text-dark: #11212e;
+      --text-soft: #334e68;
+      --shadow-xl: 0 30px 50px -20px rgba(0,40,60,0.25);
+      --shadow-elevated: 0 25px 40px -16px rgba(0,0,0,0.15);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 16px;  /* comfortable on smallest screens */
+    }
+
+    @media (min-width: 600px) { .container { padding: 0 24px; } }
+    @media (min-width: 1200px) { .container { padding: 0 40px; } }
+
+    /* ----- VIDEO HERO (full screen, never overflow) ----- */
+    .video-hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      max-height: 1000px;
+      overflow: hidden;
+    }
+
+    #heroVideo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(8,32,50,0.8) 0%, rgba(44,82,99,0.6) 100%);
+      z-index: 1;
+    }
+
+    .hero-content-video {
+      position: absolute;
+      bottom: 12%;
+      left: 5%;
+      right: 5%;
+      z-index: 3;
+      max-width: 800px;
+      color: white;
+      animation: slideUpFade 1.4s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+    }
+
+    @media (min-width: 1000px) { .hero-content-video { left: 8%; bottom: 20%; right: auto; } }
+
+    @keyframes slideUpFade {
+      0% { opacity: 0; transform: translateY(60px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content-video .hero-tag {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 60px;
+      padding: 6px 16px;
+      display: inline-block;
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      font-size: 0.75rem;
+    }
+
+    @media (min-width:600px){ .hero-content-video .hero-tag { font-size:0.9rem; padding:8px 22px; }}
+
+    .hero-content-video h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      word-break: break-word;
+    }
+
+    @media (min-width:400px){ .hero-content-video h1 { font-size:3rem; } }
+    @media (min-width:600px){ .hero-content-video h1 { font-size:4rem; } }
+    @media (min-width:1200px){ .hero-content-video h1 { font-size:5.2rem; } }
+
+    .hero-content-video h1 span {
+      color: #ff9b8a;
+      font-weight: 700;
+      background: linear-gradient(145deg, #ff9b8a, #ff6f61);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-content-video p {
+      font-size: 1rem;
+      max-width: 580px;
+      margin-bottom: 22px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      opacity: 0.95;
+    }
+
+    @media (min-width:600px){ .hero-content-video p { font-size:1.2rem; } }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-cinema {
+      padding: 12px 22px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: none;
+      background: white;
+      color: var(--deep-navy);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.35);
+      backdrop-filter: blur(4px);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    @media (max-width:360px){ .btn-cinema { padding:10px 16px; font-size:0.8rem; gap:6px; } }
+    @media (min-width:600px){ .btn-cinema { padding:16px 42px; font-size:1.1rem; } }
+
+    .btn-cinema-primary {
+      background: var(--warm-coral);
+      color: white;
+      box-shadow: 0 20px 30px -10px #ff6f61;
+    }
+
+    .btn-cinema-primary:hover {
+      background: #e85b4f;
+      transform: scale(1.02) translateY(-2px);
+      box-shadow: 0 28px 36px -12px #e85b4f;
+    }
+
+    .btn-cinema-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.4);
+      color: white;
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-cinema-outline:hover {
+      border-color: white;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* ----- HEADER (transparent, no overflow) ----- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      color: white;
+      pointer-events: none;
+    }
+
+    header * { pointer-events: auto; }
+
+    .logo-glass {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      padding: 5px 14px;
+      border-radius: 60px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    @media (min-width:700px){ .logo-glass { font-size:1.8rem; padding:8px 24px; } }
+
+    .logo-glass i { color: var(--warm-coral); filter: drop-shadow(0 0 10px #ff9b8a); }
+
+    .nav-glass { display: none; gap: 30px; }
+    .emergency-glass {
+      display: none;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      padding: 8px 22px;
+      border-radius: 60px;
+      border-left: 4px solid var(--warm-coral);
+      font-weight: 500;
+    }
+
+    @media (min-width:1000px) { .nav-glass { display: flex; } .emergency-glass { display: block; } }
+
+    .nav-glass a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .nav-glass a:hover, .nav-glass a.active { border-bottom-color: var(--warm-coral); }
+
+    .mobile-menu-icon {
+      display: block;
+      font-size: 1.8rem;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      padding: 6px 16px;
+      border-radius: 60px;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+    }
+
+    @media (min-width:1000px) { .mobile-menu-icon { display: none; } }
+
+    /* ----- MOBILE DRAWER (fullscreen but contained) ----- */
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 200;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+      padding: 20px 20px 30px;
+      overflow-y: auto;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    }
+
+    .mobile-drawer.open { transform: translateX(0); }
+
+    .close-menu {
+      font-size: 2rem;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: right;
+      cursor: pointer;
+      color: var(--deep-navy);
+      margin-bottom: 15px;
+    }
+
+    .drawer-nav {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .drawer-nav li {
+      margin: 20px 0;
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 12px;
+    }
+
+    .drawer-nav a {
+      color: var(--deep-navy);
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 500;
+      display: block;
+      transition: 0.2s;
+    }
+
+    .drawer-nav a:hover { color: var(--warm-coral); padding-left: 6px; }
+
+    .drawer-emergency {
+      margin-top: 30px;
+      background: var(--soft-peach);
+      padding: 18px;
+      border-radius: 40px;
+      text-align: center;
+    }
+
+    .drawer-emergency .phone { font-size: 1.5rem; font-weight: 700; color: var(--warm-coral); }
+
+    /* ----- MAIN CONTENT OVERLAP (cinematic) ----- */
+    .content-after-video {
+      position: relative;
+      background: white;
+      border-radius: 30px 30px 0 0;
+      margin-top: -20px;
+      z-index: 20;
+      box-shadow: 0 -20px 40px -10px rgba(0,0,0,0.1);
+    }
+
+    @media (min-width:1000px) { .content-after-video { border-radius: 50px 50px 0 0; margin-top: -40px; } }
+
+    .section-title-modern {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 35px;
+      padding: 0 5px;
+    }
+
+    .section-title-modern .chip {
+      background: var(--soft-peach);
+      color: var(--warm-coral);
+      border-radius: 60px;
+      padding: 5px 18px;
+      display: inline-block;
+      font-weight: 600;
+      margin-bottom: 16px;
+      border: 1px solid #ffdad5;
+      font-size: 0.8rem;
+    }
+
+    .section-title-modern h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--deep-navy);
+      letter-spacing: -0.02em;
+      word-break: break-word;
+    }
+
+    @media (min-width:600px){ .section-title-modern h2 { font-size:2.8rem; } }
+
+    .section-title-modern p {
+      color: var(--text-soft);
+      font-size: 1rem;
+      margin-top: 12px;
+    }
+
+    /* CONTACT PAGE SPECIFIC – fully responsive */
+    .contact-section { padding: 50px 0 70px; }
+
+    .glass-card {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 32px;
+      padding: 24px 20px;
+      box-shadow: var(--shadow-xl);
+      margin-bottom: 30px;
+    }
+
+    @media (min-width:600px) { .glass-card { padding: 35px 30px; border-radius: 40px; } }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width:500px) { .form-grid { grid-template-columns: 1fr 1fr; } }
+
+    .form-group-cinema { margin-bottom: 18px; }
+
+    .form-group-cinema label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+      color: var(--deep-navy);
+      font-size: 0.9rem;
+    }
+
+    .form-group-cinema input, 
+    .form-group-cinema select, 
+    .form-group-cinema textarea {
+      width: 100%;
+      padding: 12px 18px;
+      border-radius: 40px;
+      border: 1px solid rgba(0,0,0,0.1);
+      font-size: 0.95rem;
+      transition: 0.2s;
+      background: white;
+    }
+
+    .form-group-cinema textarea { border-radius: 24px; }
+
+    .form-group-cinema input:focus, 
+    .form-group-cinema select:focus, 
+    .form-group-cinema textarea:focus {
+      outline: none;
+      border-color: var(--warm-coral);
+      box-shadow: 0 0 0 3px rgba(255,111,97,0.2);
+    }
+
+    .contact-info-cinema {
+      background: var(--pale-mist);
+      border-radius: 32px;
+      padding: 25px 20px;
+      margin-top: 25px;
+    }
+
+    @media (min-width:900px) { .contact-info-cinema { margin-top: 0; } }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .info-item i {
+      font-size: 1.5rem;
+      color: var(--warm-coral);
+      background: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-elevated);
+      flex-shrink: 0;
+    }
+
+    .info-item span { font-size: 0.95rem; }
+
+    .social-links-cinema {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .social-links-cinema a {
+      background: white;
+      width: 40px; height: 40px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--warm-coral);
+      font-size: 1.2rem;
+      transition: 0.2s;
+      box-shadow: var(--shadow-elevated);
+    }
+
+    .social-links-cinema a:hover {
+      background: var(--warm-coral);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .map-container-cinema {
+      border-radius: 32px;
+      overflow: hidden;
+      height: 280px;
+      box-shadow: var(--shadow-xl);
+      margin: 30px 0;
+    }
+
+    @media (min-width:600px) { .map-container-cinema { height: 350px; border-radius: 40px; } }
+
+    .faq-item-cinema {
+      background: white;
+      border-radius: 24px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+      border: 1px solid #f0f0f0;
+    }
+
+    .faq-question-cinema {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .faq-answer-cinema {
+      display: none;
+      padding-top: 12px;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    .faq-answer-cinema.active { display: block; }
+
+    .confirmation-cinema {
+      text-align: center;
+      background: var(--soft-peach);
+      border-radius: 40px;
+      padding: 40px 20px;
+      margin: 30px 0;
+      display: none;
+    }
+
+    .confirmation-cinema i { font-size: 3rem; color: #2ecc71; margin-bottom: 15px; }
+
+    /* footer with exact credits */
+    .footer-cinema {
+      background: #05161f;
+      color: #9bb7d4;
+      border-radius: 30px 30px 0 0;
+      padding-top: 40px;
+    }
+
+    @media (min-width:1000px){ .footer-cinema { border-radius:60px 60px 0 0; } }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    @media (min-width:500px) { .footer-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width:900px) { .footer-grid { grid-template-columns: repeat(4,1fr); } }
+
+    .footer-logo-glass {
+      background: #1c3b4c; display: inline-flex; padding: 6px 16px; border-radius: 60px; color: white; margin-bottom: 15px;
+      font-size: 1.3rem; align-items: center; gap: 8px;
+    }
+
+    .footer-links a { color: #9bb7d4; text-decoration: none; font-size: 0.9rem; }
+    .footer-links a:hover { color: white; }
+
+    .copyright-large {
+      text-align: center; padding: 25px 12px 15px; color: #5d7994;
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.05); margin-top: 20px;
+    }
+
+    .design-credit { color: #a0c0d8; }
+
+    /* emergency sticky */
+    .emergency-sticky-cinema {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: var(--warm-coral);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      box-shadow: var(--shadow-xl);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      z-index: 200;
+    }
+
+    @media (min-width:600px){
+      .emergency-sticky-cinema { padding:14px 28px; font-size:0.95rem; gap:10px; bottom:25px; right:25px; }
+    }
+
+    /* tiny adjustments */
+    @media (max-width:360px){
+      .hero-content-video h1 { font-size: 2.2rem; }
+    }
+
+    img { max-width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+  <!-- fixed header (cinematic) -->
+  <header>
+    <div class="logo-glass">
+      <i class="fas fa-heartbeat"></i> <span>K <span style="font-weight:300;">Gurunath</span></span>
+    </div>
+    <nav class="nav-glass">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="doctors.html">Doctors</a>
+      <a href="appointment.html">Appointment</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <div class="emergency-glass">
+      <i class="fas fa-phone-alt" style="color: #ff9b8a;"></i> 0788 2294377
+    </div>
+    <div class="mobile-menu-icon" id="menuIcon"><i class="fas fa-bars"></i></div>
+  </header>
+
+  <!-- mobile drawer -->
+  <div id="mobileDrawer" class="mobile-drawer">
+    <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
+    <ul class="drawer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="doctors.html">Doctors</a></li>
+      <li><a href="appointment.html">Appointment</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="drawer-emergency">
+      <i class="fas fa-phone-alt" style="color:#ff6f61;"></i> emergency
+      <div class="phone">0788 2294377</div>
+    </div>
+  </div>
+
+  <!-- VIDEO HERO (cinematic) -->
+  <div class="video-hero">
+    <video id="heroVideo" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=800">
+      <source src="video/myvideo.MP4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+    <div class="hero-content-video">
+      <span class="hero-tag"><i class="far fa-comment-dots"></i> get in touch</span>
+      <h1>We're <span>here</span><br>for you</h1>
+      <p>Reach out with any question – our team is ready to help.</p>
+      <div class="btn-group">
+        <a href="#contact-main" class="btn-cinema btn-cinema-primary"><i class="fas fa-paper-plane"></i> send message</a>
+        <a href="tel:+919425238877" class="btn-cinema btn-cinema-outline"><i class="fas fa-phone-alt"></i> emergency call</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT (contact cinematic) -->
+  <div class="content-after-video" id="contact-main">
+    <section class="contact-section">
+      <div class="container">
+        <div class="section-title-modern" data-aos="fade-down">
+          <span class="chip"><i class="fas fa-envelope"></i> contact & support</span>
+          <h2>How can we help?</h2>
+          <p>We typically respond within 24 hours on business days</p>
+        </div>
+
+        <!-- contact form + info (mobile‑first grid) -->
+        <div class="glass-card" data-aos="fade-up">
+          <div style="display: grid; grid-template-columns: 1fr; gap: 30px;">
+            <!-- form column -->
+            <div>
+              <h2 style="font-size:1.8rem; margin-bottom:20px;">Send a message</h2>
+              <form id="contactFormCinema">
+                <div class="form-grid">
+                  <div class="form-group-cinema"><label>First name *</label><input type="text" id="first-name" required></div>
+                  <div class="form-group-cinema"><label>Last name *</label><input type="text" id="last-name" required></div>
+                  <div class="form-group-cinema"><label>Email *</label><input type="email" id="email" required></div>
+                  <div class="form-group-cinema"><label>Phone</label><input type="tel" id="phone"></div>
+                </div>
+                <div class="form-group-cinema">
+                  <label>Subject *</label>
+                  <select id="subject" required>
+                    <option value="">Select</option>
+                    <option>General Inquiry</option>
+                    <option>Appointment Question</option>
+                    <option>Billing Inquiry</option>
+                    <option>Medical Question</option>
+                    <option>Feedback</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-group-cinema">
+                  <label>Message *</label>
+                  <textarea id="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-cinema btn-cinema-primary" style="width:100%; justify-content:center;">
+                  <i class="fas fa-paper-plane"></i> Send message
+                </button>
+              </form>
+            </div>
+            <!-- info column -->
+            <div class="contact-info-cinema">
+              <h2 style="font-size:1.8rem; margin-bottom:20px;">Contact info</h2>
+              <div class="info-item"><i class="fas fa-map-marker-alt"></i> <span><strong>Address</strong><br>Dr. Gurunath Hospital, Priyadarshini Parisar East, Supela, Bhilai, Chhattisgarh 490023</span></div>
+              <div class="info-item"><i class="fas fa-phone"></i> <span><strong>Main line</strong><br>+91 94252-38877</span></div>
+              <div class="info-item"><i class="fas fa-envelope"></i> <span><strong>Email</strong><br>contact@kgurunathcardiacandmaternity.com</span></div>
+              <div class="info-item"><i class="fas fa-ambulance"></i> <span><strong>Emergency</strong><br>+91 94252-38877 (24/7)</span></div>
+              <h3 style="margin:25px 0 10px;">Opening hours</h3>
+              <div><i class="fas fa-clock" style="margin-right:8px;"></i> Mon-Fri: 8:00 AM – 8:00 PM</div>
+              <div style="margin:5px 0 5px 28px;">Sat: 9:00 AM – 5:00 PM</div>
+              <div style="margin:5px 0 5px 28px;">Sun: 10:00 AM – 4:00 PM</div>
+              <div style="margin:5px 0 5px 28px; color:var(--warm-coral);">Emergency: 24/7</div>
+              <div class="social-links-cinema">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map cinematic -->
+        <div class="map-container-cinema" data-aos="zoom-in">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3709.5695168462834!2d81.3442981!3d21.2055973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2922d5f47de987%3A0x603e3858d492d579!2sDr.%20K.Gurunath%20Cardiac%20Center!5e0!3m2!1sen!2sin!4v1693567890000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <!-- FAQ cinematic -->
+        <div class="glass-card" data-aos="fade-up">
+          <h2 style="font-size:1.9rem; text-align:center; margin-bottom:20px;">Frequently asked questions</h2>
+          <div class="faq-item-cinema">
+            <div class="faq-question-cinema">Is Ayushman Card valid in K. Gurunath Cardiac Center? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer-cinema">Yes, Ayushman Bharat Card is valid. The hospital is empaneled under PMJAY, allowing cashless treatment for eligible patients.</div>
+          </div>
+          <div class="faq-item-cinema">
+            <div class="faq-question-cinema">Which surgeries are covered under Ayushman Bharat? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer-cinema">It covers ASD, heart hole repair, pacemaker implants, myomectomy, and many more listed on our website.</div>
+          </div>
+          <div class="faq-item-cinema">
+            <div class="faq-question-cinema">What are the benefits of Ayushman Card? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer-cinema">Free treatment, insurance cover up to ₹5 lakh per family per year, financial protection against high expenses.</div>
+          </div>
+          <div class="faq-item-cinema">
+            <div class="faq-question-cinema">How do I schedule an appointment? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer-cinema">You can call us directly or use the appointment page on this site.</div>
+          </div>
+          <div class="faq-item-cinema">
+            <div class="faq-question-cinema">What should I do in a cardiac emergency? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer-cinema">Visit our emergency department immediately or call 0788 2294377. Do not ignore chest pain.</div>
+          </div>
+        </div>
+
+        <!-- confirmation message -->
+        <div class="confirmation-cinema" id="confirmationMessage">
+          <i class="fas fa-check-circle"></i>
+          <h2>Message sent successfully!</h2>
+          <p style="font-size:1.1rem;">We'll respond within 24-48 hours.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer with exact credits -->
+    <footer class="footer-cinema">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-logo-glass"><i class="fas fa-heartbeat"></i> K Gurunath</div>
+            <p style="font-size:0.9rem;">Excellence in cardiac & maternity care.</p>
+          </div>
+          <div><h5 style="color:white;">Quick</h5><ul class="footer-links" style="list-style:none;"><li style="margin:5px 0;"><a href="#">About</a></li><li><a href="#">Services</a></li></ul></div>
+          <div><h5 style="color:white;">Support</h5><ul class="footer-links" style="list-style:none;"><li style="margin:5px 0;"><a href="#">Contact</a></li><li><a href="#">Privacy</a></li></ul></div>
+          <div><h5 style="color:white;">Reach us</h5><p style="font-size:0.9rem;"><i class="fas fa-map-marker-alt"></i> Bhilai, Chhattisgarh</p><p style="font-size:0.9rem;"><i class="fas fa-phone"></i> 0788 2294377</p></div>
+        </div>
+        <div class="copyright-large">
+          <p>© 2025 Krishnex Technologies Private Limited. All Rights Reserved.</p>
+          <p class="design-credit">Designed & Developed by Krishnex Technologies Private Limited (Priyansha Tiwari)</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- emergency sticky -->
+  <a href="tel:+919425238877" class="emergency-sticky-cinema"><i class="fas fa-phone-alt"></i> Emergency 24/7</a>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true, easing: 'ease-out-cubic' });
+
+    // mobile drawer
+    const menuIcon = document.getElementById('menuIcon');
+    const drawer = document.getElementById('mobileDrawer');
+    const closeBtn = document.getElementById('closeMenu');
+
+    function openDrawer() { drawer.classList.add('open'); }
+    function closeDrawer() { drawer.classList.remove('open'); }
+
+    menuIcon.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+
+    document.querySelectorAll('.drawer-nav a').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    // video play
+    document.getElementById('heroVideo').play().catch(() => {});
+
+    // FAQ toggle
+    document.querySelectorAll('.faq-item-cinema').forEach(item => {
+      item.addEventListener('click', function() {
+        const answer = this.querySelector('.faq-answer-cinema');
+        const icon = this.querySelector('i');
+        answer.classList.toggle('active');
+        icon.classList.toggle('fa-chevron-down');
+        icon.classList.toggle('fa-chevron-up');
+      });
+    });
+
+    // form submission
+    document.getElementById('contactFormCinema').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const confirmDiv = document.getElementById('confirmationMessage');
+      confirmDiv.style.display = 'block';
+      confirmDiv.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

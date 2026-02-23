@@ -1,0 +1,1003 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- CRITICAL: perfect mobile viewport - no overflow, user-scalable for accessibility -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+  <title>Our Services · K Gurunath Center (cinematic mobile perfect)</title>
+  <!-- Fonts & Icons (Outfit) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* RESET & SAFE LAYOUT — STRICT ANTI-OVERFLOW */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: hidden;  /* kill horizontal scroll */
+      width: 100%;
+      position: relative;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #ffffff;
+      color: #11212e;
+      line-height: 1.5;
+    }
+
+    :root {
+      --deep-navy: #082032;
+      --rich-teal: #2c5263;
+      --warm-coral: #ff6f61;
+      --soft-peach: #fff1f0;
+      --pale-mist: #f0f7fa;
+      --pure-white: #ffffff;
+      --text-dark: #11212e;
+      --text-soft: #334e68;
+      --shadow-xl: 0 30px 50px -20px rgba(0,40,60,0.25);
+      --shadow-elevated: 0 25px 40px -16px rgba(0,0,0,0.15);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 16px;  /* comfortable on smallest screens */
+    }
+
+    @media (min-width: 600px) { .container { padding: 0 24px; } }
+    @media (min-width: 1200px) { .container { padding: 0 40px; } }
+
+    /* ----- VIDEO HERO (full screen, never overflow) ----- */
+    .video-hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      max-height: 1000px;
+      overflow: hidden;
+    }
+
+    #heroVideo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(8,32,50,0.8) 0%, rgba(44,82,99,0.6) 100%);
+      z-index: 1;
+    }
+
+    .hero-content-video {
+      position: absolute;
+      bottom: 12%;
+      left: 5%;
+      right: 5%;
+      z-index: 3;
+      max-width: 800px;
+      color: white;
+      animation: slideUpFade 1.4s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+    }
+
+    @media (min-width: 1000px) { .hero-content-video { left: 8%; bottom: 20%; right: auto; } }
+
+    @keyframes slideUpFade {
+      0% { opacity: 0; transform: translateY(60px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content-video .hero-tag {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 60px;
+      padding: 6px 16px;
+      display: inline-block;
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      font-size: 0.75rem;
+    }
+
+    @media (min-width:600px){ .hero-content-video .hero-tag { font-size:0.9rem; padding:8px 22px; }}
+
+    .hero-content-video h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      word-break: break-word;
+    }
+
+    @media (min-width:400px){ .hero-content-video h1 { font-size:3rem; } }
+    @media (min-width:600px){ .hero-content-video h1 { font-size:4rem; } }
+    @media (min-width:1200px){ .hero-content-video h1 { font-size:5.2rem; } }
+
+    .hero-content-video h1 span {
+      color: #ff9b8a;
+      font-weight: 700;
+      background: linear-gradient(145deg, #ff9b8a, #ff6f61);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-content-video p {
+      font-size: 1rem;
+      max-width: 580px;
+      margin-bottom: 22px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      opacity: 0.95;
+    }
+
+    @media (min-width:600px){ .hero-content-video p { font-size:1.2rem; } }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-cinema {
+      padding: 12px 22px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: none;
+      background: white;
+      color: var(--deep-navy);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.35);
+      backdrop-filter: blur(4px);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    @media (max-width:360px){ .btn-cinema { padding:10px 16px; font-size:0.8rem; gap:6px; } }
+    @media (min-width:600px){ .btn-cinema { padding:16px 42px; font-size:1.1rem; } }
+
+    .btn-cinema-primary {
+      background: var(--warm-coral);
+      color: white;
+      box-shadow: 0 20px 30px -10px #ff6f61;
+    }
+
+    .btn-cinema-primary:hover {
+      background: #e85b4f;
+      transform: scale(1.02) translateY(-2px);
+      box-shadow: 0 28px 36px -12px #e85b4f;
+    }
+
+    .btn-cinema-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.4);
+      color: white;
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-cinema-outline:hover {
+      border-color: white;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* ----- HEADER (transparent, no overflow) ----- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      color: white;
+      pointer-events: none;
+    }
+
+    header * { pointer-events: auto; }
+
+    .logo-glass {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      padding: 5px 14px;
+      border-radius: 60px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    @media (min-width:700px){ .logo-glass { font-size:1.8rem; padding:8px 24px; } }
+
+    .logo-glass i { color: var(--warm-coral); filter: drop-shadow(0 0 10px #ff9b8a); }
+
+    .nav-glass { display: none; gap: 30px; }
+    .emergency-glass {
+      display: none;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      padding: 8px 22px;
+      border-radius: 60px;
+      border-left: 4px solid var(--warm-coral);
+      font-weight: 500;
+    }
+
+    @media (min-width:1000px) { .nav-glass { display: flex; } .emergency-glass { display: block; } }
+
+    .nav-glass a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .nav-glass a:hover, .nav-glass a.active { border-bottom-color: var(--warm-coral); }
+
+    .mobile-menu-icon {
+      display: block;
+      font-size: 1.8rem;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      padding: 6px 16px;
+      border-radius: 60px;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+    }
+
+    @media (min-width:1000px) { .mobile-menu-icon { display: none; } }
+
+    /* ----- MOBILE DRAWER (fullscreen but contained) ----- */
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 200;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+      padding: 20px 20px 30px;
+      overflow-y: auto;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    }
+
+    .mobile-drawer.open { transform: translateX(0); }
+
+    .close-menu {
+      font-size: 2rem;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: right;
+      cursor: pointer;
+      color: var(--deep-navy);
+      margin-bottom: 15px;
+    }
+
+    .drawer-nav {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .drawer-nav li {
+      margin: 20px 0;
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 12px;
+    }
+
+    .drawer-nav a {
+      color: var(--deep-navy);
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 500;
+      display: block;
+      transition: 0.2s;
+    }
+
+    .drawer-nav a:hover { color: var(--warm-coral); padding-left: 6px; }
+
+    .drawer-emergency {
+      margin-top: 30px;
+      background: var(--soft-peach);
+      padding: 18px;
+      border-radius: 40px;
+      text-align: center;
+    }
+
+    .drawer-emergency .phone { font-size: 1.5rem; font-weight: 700; color: var(--warm-coral); }
+
+    /* ----- MAIN CONTENT OVERLAP (cinematic) ----- */
+    .content-after-video {
+      position: relative;
+      background: white;
+      border-radius: 30px 30px 0 0;
+      margin-top: -20px;
+      z-index: 20;
+      box-shadow: 0 -20px 40px -10px rgba(0,0,0,0.1);
+    }
+
+    @media (min-width:1000px) { .content-after-video { border-radius: 50px 50px 0 0; margin-top: -40px; } }
+
+    .section-title-modern {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 35px;
+      padding: 0 5px;
+    }
+
+    .section-title-modern .chip {
+      background: var(--soft-peach);
+      color: var(--warm-coral);
+      border-radius: 60px;
+      padding: 5px 18px;
+      display: inline-block;
+      font-weight: 600;
+      margin-bottom: 16px;
+      border: 1px solid #ffdad5;
+      font-size: 0.8rem;
+    }
+
+    .section-title-modern h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--deep-navy);
+      letter-spacing: -0.02em;
+      word-break: break-word;
+    }
+
+    @media (min-width:600px){ .section-title-modern h2 { font-size:2.8rem; } }
+
+    .section-title-modern p {
+      color: var(--text-soft);
+      font-size: 1rem;
+      margin-top: 12px;
+    }
+
+    /* SERVICES PAGE SPECIFIC – fully responsive */
+    .services-section { padding: 50px 0 70px; }
+
+    .services-grid-cinema {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width:500px) { .services-grid-cinema { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width:1000px) { .services-grid-cinema { grid-template-columns: repeat(3,1fr); } }
+
+    .service-card-cinema {
+      background: white;
+      border-radius: 32px;
+      padding: 28px 22px;
+      box-shadow: var(--shadow-elevated);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.02);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card-cinema::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, var(--warm-coral), #e85b4f);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+
+    .service-card-cinema:hover::before {
+      opacity: 1;
+    }
+
+    .service-card-cinema:hover {
+      transform: translateY(-6px);
+    }
+
+    .service-card-cinema:hover * {
+      color: white;
+      border-color: white;
+    }
+
+    .service-card-cinema * {
+      position: relative;
+      z-index: 2;
+      transition: color 0.2s ease;
+    }
+
+    .service-icon-cinema {
+      background: var(--soft-peach);
+      width: 65px; height: 65px;
+      border-radius: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: var(--warm-coral);
+      margin-bottom: 22px;
+      transition: 0.2s;
+    }
+
+    .service-card-cinema:hover .service-icon-cinema {
+      background: white;
+      color: var(--warm-coral);
+    }
+
+    .service-card-cinema h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .service-card-cinema p {
+      color: var(--text-soft);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .btn-service {
+      background: transparent;
+      border: 2px solid var(--warm-coral);
+      color: var(--warm-coral);
+      padding: 8px 20px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.2s;
+    }
+
+    .service-card-cinema:hover .btn-service {
+      border-color: white;
+      color: white;
+    }
+
+    .btn-service:hover {
+      background: white;
+      color: var(--warm-coral) !important;
+      border-color: white;
+    }
+
+    /* panels */
+    .panel-cinema {
+      background: var(--pale-mist);
+      border-radius: 32px;
+      padding: 30px 20px;
+      margin: 40px 0;
+    }
+
+    @media (min-width:600px) { .panel-cinema { border-radius: 50px; padding: 40px 30px; } }
+
+    .diagnostic-grid-cinema {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 12px;
+    }
+
+    @media (min-width:400px) { .diagnostic-grid-cinema { grid-template-columns: repeat(3,1fr); } }
+    @media (min-width:700px) { .diagnostic-grid-cinema { grid-template-columns: repeat(4,1fr); } }
+
+    .diagnostic-item {
+      background: white;
+      padding: 12px 10px;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      text-align: center;
+      transition: 0.2s;
+      cursor: pointer;
+      box-shadow: var(--shadow-elevated);
+    }
+
+    .diagnostic-item:hover {
+      background: var(--warm-coral);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .treatment-search-cinema input {
+      width: 100%;
+      max-width: 100%;
+      padding: 14px 20px;
+      border-radius: 60px;
+      border: none;
+      box-shadow: var(--shadow-elevated);
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+    }
+
+    .treatment-grid-cinema {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 10px;
+      max-height: 400px;
+      overflow-y: auto;
+      padding-right: 5px;
+    }
+
+    @media (min-width:500px) { .treatment-grid-cinema { grid-template-columns: repeat(3,1fr); } }
+    @media (min-width:800px) { .treatment-grid-cinema { grid-template-columns: repeat(4,1fr); } }
+
+    .treatment-tag {
+      background: rgba(255,255,255,0.15);
+      padding: 10px 12px;
+      border-radius: 30px;
+      font-weight: 500;
+      font-size: 0.8rem;
+      transition: 0.2s;
+      cursor: pointer;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+      text-align: center;
+    }
+
+    .treatment-tag:hover {
+      background: var(--warm-coral);
+      color: white;
+      transform: translateX(3px);
+      border-color: var(--warm-coral);
+    }
+
+    .professional-cta-cinema {
+      background: var(--deep-navy);
+      border-radius: 32px;
+      padding: 40px 20px;
+      color: white;
+      margin: 40px 0;
+    }
+
+    @media (min-width:600px) { .professional-cta-cinema { border-radius: 60px; padding: 50px 30px; } }
+
+    .point-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 30px 0;
+    }
+
+    @media (min-width:400px) { .point-grid { grid-template-columns: repeat(2,1fr); } }
+
+    .point-card {
+      background: rgba(255,255,255,0.1);
+      padding: 16px;
+      border-radius: 28px;
+      backdrop-filter: blur(4px);
+      font-size: 0.9rem;
+    }
+
+    /* process steps */
+    .process-steps-cinema {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .step-circle {
+      width: 60px; height: 60px;
+      border-radius: 30px;
+      background: var(--warm-coral);
+      color: white;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+    }
+
+    /* footer with exact credits */
+    .footer-cinema {
+      background: #05161f;
+      color: #9bb7d4;
+      border-radius: 30px 30px 0 0;
+      padding-top: 40px;
+    }
+
+    @media (min-width:1000px){ .footer-cinema { border-radius:60px 60px 0 0; } }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    @media (min-width:500px) { .footer-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width:900px) { .footer-grid { grid-template-columns: repeat(4,1fr); } }
+
+    .footer-logo-glass {
+      background: #1c3b4c; display: inline-flex; padding: 6px 16px; border-radius: 60px; color: white; margin-bottom: 15px;
+      font-size: 1.3rem; align-items: center; gap: 8px;
+    }
+
+    .footer-links a { color: #9bb7d4; text-decoration: none; font-size: 0.9rem; }
+    .footer-links a:hover { color: white; }
+
+    .copyright-large {
+      text-align: center; padding: 25px 12px 15px; color: #5d7994;
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.05); margin-top: 20px;
+    }
+
+    .design-credit { color: #a0c0d8; }
+
+    /* emergency sticky */
+    .emergency-sticky-cinema {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: var(--warm-coral);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      box-shadow: var(--shadow-xl);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      z-index: 200;
+    }
+
+    @media (min-width:600px){
+      .emergency-sticky-cinema { padding:14px 28px; font-size:0.95rem; gap:10px; bottom:25px; right:25px; }
+    }
+
+    /* tiny adjustments */
+    @media (max-width:360px){
+      .hero-content-video h1 { font-size: 2.2rem; }
+      .service-card-cinema h3 { font-size: 1.3rem; }
+      .diagnostic-item { font-size: 0.75rem; padding: 10px 5px; }
+    }
+
+    img { max-width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+  <!-- fixed header (cinematic) -->
+  <header>
+    <div class="logo-glass">
+      <i class="fas fa-heartbeat"></i> <span>K <span style="font-weight:300;">Gurunath</span></span>
+    </div>
+    <nav class="nav-glass">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="doctors.html">Doctors</a>
+      <a href="appointment.html">Appointment</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="emergency-glass">
+      <i class="fas fa-phone-alt" style="color: #ff9b8a;"></i> 0788 2294377
+    </div>
+    <div class="mobile-menu-icon" id="menuIcon"><i class="fas fa-bars"></i></div>
+  </header>
+
+  <!-- mobile drawer -->
+  <div id="mobileDrawer" class="mobile-drawer">
+    <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
+    <ul class="drawer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="doctors.html">Doctors</a></li>
+      <li><a href="appointment.html">Appointment</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="drawer-emergency">
+      <i class="fas fa-phone-alt" style="color:#ff6f61;"></i> emergency
+      <div class="phone">0788 2294377</div>
+    </div>
+  </div>
+
+  <!-- VIDEO HERO (cinematic) -->
+  <div class="video-hero">
+    <video id="heroVideo" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=800">
+      <source src="video/myvideo.MP4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+    <div class="hero-content-video">
+      <span class="hero-tag"><i class="fas fa-stethoscope"></i> comprehensive care</span>
+      <h1>Cardiac & <span>maternity</span><br>services</h1>
+      <p>From diagnostics to advanced surgery – all under one roof.</p>
+      <div class="btn-group">
+        <a href="#services-main" class="btn-cinema btn-cinema-primary"><i class="fas fa-heartbeat"></i> explore services</a>
+        <a href="appointment.html" class="btn-cinema btn-cinema-outline"><i class="fas fa-calendar-check"></i> book appointment</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT (services cinematic) -->
+  <div class="content-after-video" id="services-main">
+    <section class="services-section">
+      <div class="container">
+        <div class="section-title-modern" data-aos="fade-down">
+          <span class="chip"><i class="fas fa-stethoscope"></i> what we offer</span>
+          <h2>Comprehensive cardiac care</h2>
+          <p>From prevention to intervention and rehabilitation</p>
+        </div>
+
+        <!-- services cards (cinematic) -->
+        <div class="services-grid-cinema" data-aos="fade-up">
+          <div class="service-card-cinema">
+            <div class="service-icon-cinema"><i class="fas fa-heartbeat"></i></div>
+            <h3>Cardiac Diagnostics</h3>
+            <p>ECG, echocardiography, stress testing, cardiac CT and MRI to assess heart health.</p>
+            <a href="#" class="btn-service">learn more</a>
+          </div>
+          <div class="service-card-cinema">
+            <div class="service-icon-cinema"><i class="fas fa-procedures"></i></div>
+            <h3>Interventional Cardiology</h3>
+            <p>Angioplasty, stenting, TAVR, and MitraClip – minimally invasive.</p>
+            <a href="#" class="btn-service">learn more</a>
+          </div>
+          <div class="service-card-cinema">
+            <div class="service-icon-cinema"><i class="fas fa-heart"></i></div>
+            <h3>Cardiac Surgery</h3>
+            <p>Bypass, valve repair/replacement, congenital defect correction.</p>
+            <a href="#" class="btn-service">learn more</a>
+          </div>
+          <div class="service-card-cinema">
+            <div class="service-icon-cinema"><i class="fas fa-bolt"></i></div>
+            <h3>Electrophysiology</h3>
+            <p>Ablation, pacemaker, ICD implantation, arrhythmia management.</p>
+            <a href="#" class="btn-service">learn more</a>
+          </div>
+          <div class="service-card-cinema">
+            <div class="service-icon-cinema"><i class="fas fa-lungs"></i></div>
+            <h3>Cardiac Rehabilitation</h3>
+            <p>Supervised recovery, disease prevention, lifestyle programs.</p>
+            <a href="#" class="btn-service">learn more</a>
+          </div>
+          <div class="service-card-cinema">
+            <div class="service-icon-cinema"><i class="fas fa-shield-alt"></i></div>
+            <h3>Preventive Cardiology</h3>
+            <p>Risk assessment, lifestyle and medical prevention programs.</p>
+            <a href="#" class="btn-service">learn more</a>
+          </div>
+        </div>
+
+        <!-- Diagnostic tests panel -->
+        <div class="panel-cinema" data-aos="fade-up">
+          <h2 style="font-size:1.8rem; margin-bottom:20px;">Diagnostic Tests Available</h2>
+          <div class="diagnostic-grid-cinema">
+            <div class="diagnostic-item">Amniocentesis</div>
+            <div class="diagnostic-item">Amniotic Fluid Test</div>
+            <div class="diagnostic-item">Chorionic Villus Sampling</div>
+            <div class="diagnostic-item">Cordocentesis</div>
+            <div class="diagnostic-item">Diagnostic Laparoscopy</div>
+            <div class="diagnostic-item">Diagnostic Abdominal Scope</div>
+            <div class="diagnostic-item">Diagnostic Hysteroscopy</div>
+            <div class="diagnostic-item">Electrophysiological Study</div>
+            <div class="diagnostic-item">EUA (Minor Girls / Unmarried)</div>
+            <div class="diagnostic-item">Fetal Blood Test</div>
+            <div class="diagnostic-item">Gynecological Examination</div>
+            <div class="diagnostic-item">Heart Catheterization</div>
+            <div class="diagnostic-item">Heart Rhythm Test</div>
+            <div class="diagnostic-item">Prenatal Genetic Test</div>
+            <div class="diagnostic-item">Uterine Scope Examination</div>
+          </div>
+        </div>
+
+        <!-- Treatment blue section -->
+        <div class="panel-cinema" style="background:var(--deep-navy); color:white;" data-aos="fade-up">
+          <h2 style="font-size:1.8rem; color:white;">Treatment Available</h2>
+          <div class="treatment-search-cinema">
+            <input type="text" id="treatmentSearch" placeholder="🔍 Search treatment...">
+          </div>
+          <div class="treatment-grid-cinema" id="treatmentList">
+            <span class="treatment-tag">Artery Opening Procedure</span>
+            <span class="treatment-tag">Balloon Atrial Septostomy</span>
+            <span class="treatment-tag">Balloon Dilatation</span>
+            <span class="treatment-tag">Balloon Mitral Valvotomy</span>
+            <span class="treatment-tag">Balloon Pulmonary Valvotomy</span>
+            <span class="treatment-tag">Blood Clot Removal</span>
+            <span class="treatment-tag">Bronchial Artery Embolisation</span>
+            <span class="treatment-tag">Catheter Directed Thrombolysis</span>
+            <span class="treatment-tag">Cervical Pre-cancer Treatment</span>
+            <span class="treatment-tag">Cervical Stitch for Pregnancy</span>
+            <span class="treatment-tag">Coronary Angioplasty</span>
+            <span class="treatment-tag">D&C</span>
+            <span class="treatment-tag">Dilation and Evacuation</span>
+            <span class="treatment-tag">Ectopic Pregnancy Treatment</span>
+            <span class="treatment-tag">Electro Cauterisation</span>
+            <span class="treatment-tag">Embolization</span>
+            <span class="treatment-tag">Fallopian Tube Opening</span>
+            <span class="treatment-tag">Fetal Blood Transfusion</span>
+            <span class="treatment-tag">Heart Duct Stent Placement</span>
+            <span class="treatment-tag">Heart Fluid Drainage</span>
+            <span class="treatment-tag">Heart Muscle Reduction</span>
+            <span class="treatment-tag">High Risk Delivery</span>
+            <span class="treatment-tag">Hysteroscopic IUCD Removal</span>
+            <span class="treatment-tag">Intrauterine Transfusions</span>
+            <span class="treatment-tag">IUD Removal</span>
+            <span class="treatment-tag">Leg Artery Opening</span>
+            <span class="treatment-tag">LLETZ</span>
+            <span class="treatment-tag">Lung Bleeding Treatment</span>
+            <span class="treatment-tag">Manual Removal of Placenta</span>
+            <span class="treatment-tag">Medical Abortion</span>
+            <span class="treatment-tag">Medical Management of Ectopic</span>
+            <span class="treatment-tag">Medical Termination of Pregnancy</span>
+            <span class="treatment-tag">PDA Stent Placement</span>
+            <span class="treatment-tag">Pelvic Abscess Treatment</span>
+            <span class="treatment-tag">Percutaneous Septal Myocardial Ablation</span>
+            <span class="treatment-tag">Pericardiocentesis</span>
+            <span class="treatment-tag">Peripheral Angioplasty</span>
+            <span class="treatment-tag">PTCA</span>
+            <span class="treatment-tag">Pyometra Drainage</span>
+            <span class="treatment-tag">Shirodkar's Stitch</span>
+            <span class="treatment-tag">Systemic Thrombolysis</span>
+            <span class="treatment-tag">Temporary Pacemaker</span>
+            <span class="treatment-tag">Uterine Evacuation</span>
+            <span class="treatment-tag">Vulval Hematoma Drainage</span>
+          </div>
+        </div>
+
+        <!-- medical condition treatment -->
+        <div class="panel-cinema" data-aos="fade-up">
+          <h2 style="font-size:1.8rem;">Medical Condition Treatment</h2>
+          <div class="diagnostic-grid-cinema" style="margin-top:20px;">
+            <div class="diagnostic-item">Heart Duct Treatment</div>
+            <div class="diagnostic-item">Heart Hole Treatment</div>
+            <div class="diagnostic-item">PDA - Patent Ductus Arteriosus</div>
+            <div class="diagnostic-item">VSD - Ventricular Septal Defect</div>
+          </div>
+        </div>
+
+        <!-- professional CTA -->
+        <div class="professional-cta-cinema" data-aos="flip-up">
+          <h2 style="font-size:1.8rem;">For Medical Professionals Only</h2>
+          <p style="margin:10px 0;">Join a Network Built by Doctors, for Doctors.</p>
+          <div class="point-grid">
+            <div class="point-card">✔ Only Verified Doctors & Hospitals</div>
+            <div class="point-card">✔ Trusted by 55,000+ Professionals</div>
+            <div class="point-card">✔ 1 Crore+ Patients – Waiting for You</div>
+            <div class="point-card">✔ Your Practice, Your Identity</div>
+            <div class="point-card">✔ Top City in Chhattisgarh</div>
+          </div>
+          <a href="#" class="btn-cinema btn-cinema-primary" style="margin-top:10px;">Join Now</a>
+        </div>
+
+        <!-- emergency services (simple) -->
+        <div class="panel-cinema" style="background:var(--soft-peach);">
+          <h2 style="font-size:1.8rem;">Emergency Cardiac Care 24/7</h2>
+          <div class="services-grid-cinema" style="margin-top:20px;">
+            <div class="service-card-cinema" style="background:white;">
+              <i class="fas fa-ambulance" style="font-size:2rem; color:var(--warm-coral); margin-bottom:12px;"></i>
+              <h3>Cardiac Ambulance</h3>
+              <p>Fully equipped with trained paramedics.</p>
+            </div>
+            <div class="service-card-cinema" style="background:white;">
+              <i class="fas fa-first-aid" style="font-size:2rem; color:var(--warm-coral); margin-bottom:12px;"></i>
+              <h3>Chest Pain Unit</h3>
+              <p>Rapid assessment & door-to-treatment.</p>
+            </div>
+            <div class="service-card-cinema" style="background:white;">
+              <i class="fas fa-procedures" style="font-size:2rem; color:var(--warm-coral); margin-bottom:12px;"></i>
+              <h3>CCU/ICU</h3>
+              <p>Advanced monitoring & life support.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- process steps (cinematic) -->
+        <div class="glass-card" style="background:white; border-radius:32px; padding:25px 20px; box-shadow:var(--shadow-xl);" data-aos="fade-up">
+          <h2 style="font-size:1.8rem; text-align:center;">Our patient care process</h2>
+          <div class="process-steps-cinema">
+            <div style="text-align:center;"><div class="step-circle">1</div><h3 style="font-size:1rem;">Consultation</h3></div>
+            <div style="text-align:center;"><div class="step-circle">2</div><h3 style="font-size:1rem;">Diagnosis</h3></div>
+            <div style="text-align:center;"><div class="step-circle">3</div><h3 style="font-size:1rem;">Treatment Plan</h3></div>
+            <div style="text-align:center;"><div class="step-circle">4</div><h3 style="font-size:1rem;">Treatment</h3></div>
+            <div style="text-align:center;"><div class="step-circle">5</div><h3 style="font-size:1rem;">Follow-up</h3></div>
+          </div>
+        </div>
+
+        <!-- final CTA -->
+        <div class="professional-cta-cinema" style="background:linear-gradient(145deg, #082032, #1d455b);" data-aos="flip-up">
+          <h2 style="font-size:1.8rem;">Ready to discuss your cardiac needs?</h2>
+          <p style="margin:15px 0;">Schedule a consultation with our specialists.</p>
+          <a href="appointment.html" class="btn-cinema btn-cinema-primary"><i class="fas fa-calendar-check"></i> book appointment</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer with exact credits -->
+    <footer class="footer-cinema">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-logo-glass"><i class="fas fa-heartbeat"></i> K Gurunath</div>
+            <p style="font-size:0.9rem;">Excellence in cardiac & maternity care.</p>
+          </div>
+          <div><h5 style="color:white;">Quick</h5><ul class="footer-links" style="list-style:none;"><li style="margin:5px 0;"><a href="#">About</a></li><li><a href="#">Services</a></li></ul></div>
+          <div><h5 style="color:white;">Support</h5><ul class="footer-links" style="list-style:none;"><li style="margin:5px 0;"><a href="#">Contact</a></li><li><a href="#">Privacy</a></li></ul></div>
+          <div><h5 style="color:white;">Reach us</h5><p style="font-size:0.9rem;"><i class="fas fa-map-marker-alt"></i> Bhilai, Chhattisgarh</p><p style="font-size:0.9rem;"><i class="fas fa-phone"></i> 0788 2294377</p></div>
+        </div>
+        <div class="copyright-large">
+          <p>© 2025 Krishnex Technologies Private Limited. All Rights Reserved.</p>
+          <p class="design-credit">Designed & Developed by Krishnex Technologies Private Limited (Priyansha Tiwari)</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- emergency sticky -->
+  <a href="tel:+919425238877" class="emergency-sticky-cinema"><i class="fas fa-phone-alt"></i> Emergency 24/7</a>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true, easing: 'ease-out-cubic' });
+
+    // mobile drawer
+    const menuIcon = document.getElementById('menuIcon');
+    const drawer = document.getElementById('mobileDrawer');
+    const closeBtn = document.getElementById('closeMenu');
+
+    function openDrawer() { drawer.classList.add('open'); }
+    function closeDrawer() { drawer.classList.remove('open'); }
+
+    menuIcon.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+
+    document.querySelectorAll('.drawer-nav a').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    // video play
+    document.getElementById('heroVideo').play().catch(() => {});
+
+    // treatment search
+    const searchInput = document.getElementById('treatmentSearch');
+    if (searchInput) {
+      searchInput.addEventListener('keyup', function() {
+        const val = this.value.toLowerCase();
+        document.querySelectorAll('.treatment-tag').forEach(tag => {
+          tag.style.display = tag.innerText.toLowerCase().includes(val) ? 'inline-block' : 'none';
+        });
+      });
+    }
+  </script>
+</body>
+</html>
